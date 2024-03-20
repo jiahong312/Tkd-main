@@ -1,0 +1,49 @@
+{% if current_user.is_authenticated %}
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('logout')}}">登出系統</a>
+</li>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('login')}}">登入系統</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('register')}}">註冊帳號</a>
+</li>
+{% endif %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    網頁文檔屬性、相關資訊(meta, data of data)
+
+</head>
+
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    網頁內容主體
+    {% if current_user.is_authenticated %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('logout')}}">登出系統</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('login')}}">登入系統</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('register')}}">註冊帳號</a>
+    </li>
+    {% endif %}
+</body>
+
+</html>
